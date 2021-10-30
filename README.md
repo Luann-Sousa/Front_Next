@@ -49,29 +49,68 @@ pro nosso arquivo \_app.js que ele se refletirá em toda sua aplicação.</br>
 14* Dentro de "context" crie uma arquivo chamado "AuthContext" aqui onde vai ter nossa regra de authemtcação vai ter tanto as propiedade que precisamos repassar, quanto as funções que irão alterar essas propiedades ou jogar esse usuairio pra nulo ou prencher com algum nome ou com email isso com as infomarções que precisamos.
 15* Dentro de "hooks" crie um arquivo chamado "useAuth" esse cara será responsável por fazer nosso conexção e pegas os dados que precisamos .</br>
 
-# APLICANDO CHAKRA
+# APLICANDO CHAKRA</br>
 
-1* Ir até a documentação https://chakra-ui.com/
-2* Getting Started => Iniciar doc ..
--> npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4cls
--> yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4
+1* Ir até a documentação https://chakra-ui.com/</br>
+2* Getting Started => Iniciar doc ..</br>
+-> npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4cls</br>
+-> yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4</br>
 
-# CONFIGURANDO ESLINT
+# CONFIGURANDO ESLINT</br>
 
-1* How would you like to use ESLint ?
--> to check syntax, find problems, and enforce code style
-2* What type of modules does your project use ?
--> JavaScript modules (import/export)
-3* Does your project use TypeScript? qual framework seu peojeto esta usando
--> React
-3* esta utilizando typescript
--> não
-4* Where does your code run? quanto no brawser quanto no
-5*How would you like to define a style for your project? Qual guia de estilo vc que seguir
--> Use a popular style guide
-6* Which style guide do you want to follow? gui de estilo
--> > Airbnb: https://github.com/airbnb/javascript
-7* What format do you want your config file to be in? qual formato do meu arquivo de configuração
--> JSON
-\*8 Instale o Prettier
--> yarn add prettier eslint-config-prettier@7.2.0 eslint-plugin-prettier -D
+1* How would you like to use ESLint ?</br>
+-> to check syntax, find problems, and enforce code style</br>
+2* What type of modules does your project use ?</br>
+-> JavaScript modules (import/export)</br>
+3* Does your project use TypeScript? qual framework seu peojeto esta usando</br>
+-> React</br>
+3* esta utilizando typescript</br>
+-> não</br>
+4* Where does your code run? quanto no brawser quanto no node.</br>
+5*How would you like to define a style for your project? Qual guia de estilo vc que seguir.</br>
+-> Use a popular style guide</br>
+6* Which style guide do you want to follow? gui de estilo.</br>
+-> > Airbnb: https://github.com/airbnb/javascript</br>
+7* What format do you want your config file to be in? qual formato do meu arquivo de configuração.</br>
+-> JSON</br>
+\*8 Instale o Prettier</br>
+-> yarn add prettier eslint-config-prettier@7.2.0 eslint-plugin-prettier -D</br>
+
+# VAMOS TRABALHA COM ABSOLUTE PATH</br>
+
+-> Oque é isso, vamos dizer que nós tem uma pasta dentro de nosso projeto, e dentro dessa pasta tem um arquivo
+que você precisa esta utilizando certo ? podemos observar em nosso projeto que temos nossa estrutura pra qual tipo
+de projeto for adequado ai pra você está utilizando. Este arquivo normalmente fazemos importação dele dessa forma aqui para estamos utilizando correto
+../../components/Box.js, agora com nosso absolute path podemos dizer que agente economiza muito isso exemplo quando temos esse exemplo ../../components/Box.js. e ja com absolute path agente cria uma pasta chamada "src" e colocamos todas estrutura de projeto dentro dela.</br>
+
+-> E preciso ir na raiz do seu projeto e criar um arquivo chamado "jsconfig.json" junto com essas configurações.</br>
+{</br>
+"compilerOptions": {</br>
+"baseUrl": ".",</br>
+"paths": {</br>
+"src/components/_": ["components/_"],</br>
+"src/contexts/_": ["contexts/_"],</br>
+"src/hooks/_": ["hooks/_"],</br>
+"src/lib/_": ["lib/_"],</br>
+"src/styles/_": ["styles/_"],</br>
+"src/utils/_": ["utils/_"]</br>
+}</br>
+}</br>
+}</br>
+
+-> Acima nessa configuração estamos dizendo o seguinte que tudo que estiver dentro de "src" eu irei poder acessar assim src/components;</br>
+
+# CONFIGURANDO DATOCMS
+
+-> Acesse https://dashboard.datocms.com/projects.
+-> Crie um novo projeto.
+-> Aparecera 2 opção criar um projeto em branco ou em demo.
+-> Ecolha a opção projeto em branco .
+-> De um nome ao seu proejto.
+-> Click em cretae projeto.
+-> Agora iremos abrir nosso prjeto que acabamos de criar que agente ira precisa do token pra poder integrar o Dato algum momento
+-> Procure um botão de + pra criamos nosso modelo ok.
+-> De um nome ao seu modelo exemplo my_modelo
+-> Click em Guardar modelo
+-> Ele criou seu modelo ok, agora precisamos dentro desse modelo criar nossas colunas blz ?
+-> Vamos ter varios tipo que podemos esta usando no momento escolha o que de acordo atenda sua necessidade.

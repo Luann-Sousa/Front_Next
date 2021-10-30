@@ -1,5 +1,5 @@
 // eslint-disable-next-line prettier/prettier
-import useAuth from "../hooks/useAuth";
+import useAuth from "src/hooks/useAuth";
 
 function Dashboard() {
   const { user } = useAuth();
