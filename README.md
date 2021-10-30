@@ -48,3 +48,30 @@ pro nosso arquivo \_app.js que ele se refletirá em toda sua aplicação.</br>
 
 14* Dentro de "context" crie uma arquivo chamado "AuthContext" aqui onde vai ter nossa regra de authemtcação vai ter tanto as propiedade que precisamos repassar, quanto as funções que irão alterar essas propiedades ou jogar esse usuairio pra nulo ou prencher com algum nome ou com email isso com as infomarções que precisamos.
 15* Dentro de "hooks" crie um arquivo chamado "useAuth" esse cara será responsável por fazer nosso conexção e pegas os dados que precisamos .</br>
+
+# APLICANDO CHAKRA
+
+1* Ir até a documentação https://chakra-ui.com/
+2* Getting Started => Iniciar doc ..
+-> npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4cls
+-> yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4
+
+# CONFIGURANDO ESLINT
+
+1* How would you like to use ESLint ?
+-> to check syntax, find problems, and enforce code style
+2* What type of modules does your project use ?
+-> JavaScript modules (import/export)
+3* Does your project use TypeScript? qual framework seu peojeto esta usando
+-> React
+3* esta utilizando typescript
+-> não
+4* Where does your code run? quanto no brawser quanto no
+5*How would you like to define a style for your project? Qual guia de estilo vc que seguir
+-> Use a popular style guide
+6* Which style guide do you want to follow? gui de estilo
+-> > Airbnb: https://github.com/airbnb/javascript
+7* What format do you want your config file to be in? qual formato do meu arquivo de configuração
+-> JSON
+\*8 Instale o Prettier
+-> yarn add prettier eslint-config-prettier@7.2.0 eslint-plugin-prettier -D
