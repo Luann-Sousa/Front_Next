@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import Layout from 'src/components/Layout';
 import { Text, Flex, Button } from '@chakra-ui/react';
 import Link from 'next/link';
+import Layout from '../components/Layout';
 
 function Privacy() {
   return (
