@@ -1,11 +1,41 @@
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/button-has-type */
-import { Box, Flex, Heading, Text, Button } from '@chakra-ui/react';
-import { getAllTechnologies } from '../lib/dato-cms';
+import { useState } from 'react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Wrap,
+  WrapItem,
+  Center,
+  Image,
+  useColorModeValue,
+  Link,
+  SimpleGrid,
+} from '@chakra-ui/react';
+import SerieCard from '../components/SerieCard/SerieCard';
+import { getAllSeries, getAllTechnologies } from '../lib/dato-cms';
 import Layout from '../components/Layout';
+import Footer from '../components/Footer';
 
 const Cover = ({ technologies }) => {
-  console.log(technologies);
-  const bgColor = '#FFF';
+  const [currentTechnologies, setTechnologies] = useState(technologies);
+  const bgColor = useColorModeValue('#FFFFFF', '#1A202C');
+
+  const handleShowAllTechnologies = () => {
+    const tecs = currentTechnologies.map((t) => {
+      t.defaultVisible = true;
+      return t;
+    });
+    setTechnologies(tecs);
+  };
+
+  const hiddenTechnologies = currentTechnologies?.filter(
+    (t) => !t.defaultVisible,
+  ).length;
   return (
     <Box bg={bgColor}>
       <Flex justifyContent="center" alignItems="center" py={20}>
@@ -46,28 +76,97 @@ const Cover = ({ technologies }) => {
               Bora começar!
             </Button>
           </Box>
-          {/* { technologies.map( data => (
-
-          ))} */}
+          <Wrap>
+            {currentTechnologies
+              ?.filter((f) => f.defaultVisible)
+              ?.map((tech) => (
+                <WrapItem>
+                  <Center
+                    w="100px"
+                    h="100px"
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    overflow="hidden"
+                    flexDirection="column"
+                  >
+                    <Image
+                      src={tech.logo.url}
+                      alt={tech.name}
+                      width={40}
+                      height={40}
+                      title={tech.name}
+                    />
+                    <Text
+                      fontSize="sm"
+                      textAlign="center"
+                      fontWeight="bold"
+                      mt={2}
+                    >
+                      {tech.name}
+                    </Text>
+                  </Center>
+                </WrapItem>
+              ))}
+            {hiddenTechnologies > 0 && (
+              <WrapItem>
+                <Center
+                  w="100px"
+                  h="100px"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  flexDirection="column"
+                >
+                  <Link onClick={handleShowAllTechnologies}>
+                    <Text
+                      fontSize="sm"
+                      textAlign="center"
+                      fontWeight="bold"
+                      mt={2}
+                    >
+                      {`+${hiddenTechnologies} outras`}
+                    </Text>
+                  </Link>
+                </Center>
+              </WrapItem>
+            )}
+          </Wrap>
         </Flex>
       </Flex>
     </Box>
   );
 };
-export default function Home({ technologies }) {
+const Series = ({ series }) => (
+  <Flex id="series" justify="center">
+    <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
+      <Heading mb={4}>Séries</Heading>
+      <SimpleGrid columns={[1, null, 3]} spacing="40px">
+        {series.map((serie) => (
+          <SerieCard serie={serie} key={serie.id} />
+        ))}
+      </SimpleGrid>
+    </Flex>
+  </Flex>
+);
+
+export default function Home({ technologies, series }) {
   return (
     <Layout bg="gray.100" w="100%" p={4}>
       <Cover technologies={technologies} />
+      <Series series={series} />
+      <Footer />
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
   const technologies = await getAllTechnologies();
+  const series = await getAllSeries();
 
   return {
     props: {
       technologies,
+      series,
     },
     revalidate: 120,
   };
